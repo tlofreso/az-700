@@ -13,6 +13,24 @@
         },
         "subnet1Prefix": {
             "value": "10.20.0.0/27"
-        }
+        },
+        "subnet2Name": {
+            "value": "SharedServicesSubnet"
+        },
+        "subnet2Prefix": {
+            "value": "10.20.10.0/24"
+        },
+        "subnet3Name": {
+            "value": "DatabaseSubnet"
+        },
+        "subnet3Prefix": {
+            "value": "10.20.20.0/24"
+        },
+        "subnet4Name": {
+            "value": "PublicWebServiceSubnet"
+        },
+        "subnet4Prefix": {
+            "value": "10.20.30.0/24"
+        },
     }
 }

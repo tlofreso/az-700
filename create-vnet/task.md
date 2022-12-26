@@ -72,5 +72,6 @@ $virtualNetwork | Set-AzVirtualNetwork
 
 [Structure & Syntax](https://learn.microsoft.com/en-us/azure/azure-resource-manager/templates/syntax)
 [ARM template documentation](https://learn.microsoft.com/en-us/azure/azure-resource-manager/templates/)
+[ARM template reference](https://learn.microsoft.com/en-us/azure/templates/)
 
 `metadata` may be used to provide further context on a particular object within the template schema. This can be used with [PSDoc](https://azure.github.io/PSDocs.Azure/using-metadata/) to auto-document.
