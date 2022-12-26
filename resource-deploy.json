@@ -10,30 +10,9 @@
         "vnetAddressPrefix": {
             "type": "string"
         },
-        "subnet1Name": {
-            "type": "string"
-        },
-        "subnet1Prefix": {
-            "type": "string"
-        },
-        "subnet2Name": {
-            "type": "string"
-        },
-        "subnet2Prefix": {
-            "type": "string"
-        },
-        "subnet3Name": {
-            "type": "string"
-        },
-        "subnet3Prefix": {
-            "type": "string"
-        },
-        "subnet4Name": {
-            "type": "string"
-        },
-        "subnet4Prefix": {
-            "type": "string"
-        },
+        "allSubnets": {
+            "type": "array"
+        }
     },
     "functions": [],
     "variables": {},
@@ -49,31 +28,17 @@
                         "[parameters('vnetAddressPrefix')]"
                     ]
                 },
-                "subnets": [
+                "copy": [
                     {
-                        "name": "[parameters('subnet1Name')]",
-                        "properties": {
-                            "addressPrefix": "[parameters('subnet1Prefix')]"
+                        "name": "subnets",
+                        "count": "[length(parameters('allSubnets'))]",
+                        "input": {
+                            "name": "[parameters('allSubnets')[copyIndex('subnets')].name]",
+                            "properties": {
+                                "addressPrefix": "[parameters('allSubnets')[copyIndex('subnets')].addressPrefix]"
+                            }
                         }
-                    },
-                    {
-                        "name": "[parameters('subnet2Name')]",
-                        "properties": {
-                            "addressPrefix": "[parameters('subnet2Prefix')]"
-                        }
-                    },
-                    {
-                        "name": "[parameters('subnet3Name')]",
-                        "properties": {
-                            "addressPrefix": "[parameters('subnet3Prefix')]"
-                        }
-                    },
-                    {
-                        "name": "[parameters('subnet4Name')]",
-                        "properties": {
-                            "addressPrefix": "[parameters('subnet4Prefix')]"
-                        }
-                    },
+                    }
                 ]
             }
         }
