@@ -1,0 +1,44 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "allVnets": {
+            "type": "array"
+        }
+    },
+    "functions": [],
+    "variables": {},
+    "resources": [
+
+        {
+            "type": "Microsoft.Network/virtualNetworks",
+            "apiVersion": "2021-08-01",
+            "copy": {
+                "name": "vnets",
+                "count": "[length(parameters('allVnets'))]"
+            },
+            "name": "[parameters('allVnets')[copyIndex('vnets')].vnetname]",
+            "location": "[parameters('allVnets')[copyIndex('vnets')].region]",
+            "properties": {
+                "addressSpace": {
+                    "addressPrefixes": [
+                        "[parameters('allVnets')[copyIndex('vnets')].addressPrefixes]"
+                    ]
+                },
+                "copy": [
+                    {
+                        "name": "subnets",
+                        "count": "[length(parameters('allVnets')[copyIndex('vnets')].Subnets)]",
+                        "input": {
+                            "name": "[parameters('allVnets')[copyIndex('vnets')].Subnets[copyIndex('subnets')].name]",
+                            "properties": {
+                                "addressPrefix": "[parameters('allVnets')[copyIndex('vnets')].Subnets[copyIndex('subnets')].addressPrefix]"
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    ],
+    "outputs": {}
+}
