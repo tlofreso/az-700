@@ -1,3 +1,5 @@
+Exercise: Design and implement a virtual network in Azure
+
 # Design and implement a virtual network in Azure
 
 Task 1: Create the ContosoResourceGroup
@@ -75,3 +77,7 @@ $virtualNetwork | Set-AzVirtualNetwork
 [ARM template reference](https://learn.microsoft.com/en-us/azure/templates/)
 
 `metadata` may be used to provide further context on a particular object within the template schema. This can be used with [PSDoc](https://azure.github.io/PSDocs.Azure/using-metadata/) to auto-document.
+
+helpful for nested `copy` elements, and mixed-scope deployments: https://www.yobyot.com/cloud/sample-arm-template-virtual-network-example-vnet-multiple-subscriptions/2018/07/11/
+
+good article describing `copy` use: https://borzenin.com/use-copy-function-to-simplify-arm-templates/
